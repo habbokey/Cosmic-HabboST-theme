@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <!--header class="page-header flex-container flex-vertical-center">
+            <div class="page-header-content">
+                <h1>{{site.shortname}} {% if action == "team" %}Teams{% else %}Staff{% endif %}</h1>
+                {{locale.desc}}
+            </div>
+        </header--->
+<div class="wrapper">
+        <div class="content">
+		
+            <div class="content-left staff-content">
+                {% for employee in data %}
+                {% if employee.users is not empty %}
+				{% if user.settings.hide_online == 0 %}
+                <!--article class="default-section">
+                      <div class="aside-title-content">{{employee.rank_name}}
+					  </div>
+                      {% if action == "team" %}
+					  <div class="aside-desc-content">{{employee.rank_description}}
+					  </div>
+					  {% endif %}
+                      <div class="aside-content">
+
+                      <div class="members-container">
+                          {% for user in employee.users %}
+                          <div class="member-container">
+                              <a href="/profile/{{user.username}}" class="member-content flex-container flex-vertical-center">
+                                  <div class="member-avatar flex-container flex-vertical-center flex-horizontal-center">
+                                      <img src="{{site.fpath}}?figure={{user.look}}&gesture=sml&headonly=1" alt="{{user.username}}" class="pixelated">
+                                  </div>
+                                  <div class="member-details">
+                                      <div class="details-username">{{user.username}}</div>
+                                      <div class="details-function">{{user.settings.role}}</div>
+                                      <div class="details-motto">{{user.motto}}</div>
+                                  </div>
+                                  <div class="member-status flex-container flex-vertical-center flex-horizontal-center">
+                                      <span class="status-icon {% if user.settings.hide_online == 0 %}{% if user.online %}online{% endif %}{% endif %}"></span>
+                                  </div>
+                              </a>
+                          </div>
+                          {% endfor %}
+                      </div>
+                  </div>
+                </article-->
+			
+			
+			<h2>{{employee.rank_name}}</h2>
+					 
+			
+			<ul class="members-list">
+                                      			  {% for user in employee.users %}
+       
+
+      <li class="members-list-item {% if user.online %}online{% endif %}">
+                                    <div class="members-list-item-wrapper">
+                                        <div class="members-list-item-img-wrapper">
+                                            <img class="members-list-item-img-habbo" src="{{site.fpath}}?figure={{user.look}}&gesture=sml&amp;head_direction=3" alt="{{user.username}}" alt="">
+                                            <img class="members-list-item-img-background" src="https://habbo.st/public/assets/pix/img/rooms/10.png" alt="">
+                                        </div>
+                                        <div class="members-list-item-info">
+                                            <span class="after adm">
+                                                <a href="/profile/{{user.username}}">{{user.username}}</a>
+                                            </span>
+											 <div class="member-status flex-container flex-vertical-center flex-horizontal-center">
+                                      <span class="status-icon {% if user.settings.hide_online == 0 %}
+									  {% if user.online %}online{% endif %}{% endif %}"></span>
+                                  </div>
+                                            <p>{{user.motto}}</p>
+                                        </div>
+                                    </div>
+									
+                                    <ul class="members-list-item-bagdes-list">
+                                    <li class="members-list-item-bagdes-list-item"> <img src="{{site.cpath}}/c_images/album1584/" alt=""> 
+							</li>
+							
+                                    </ul>
+
+									
+                                </li>
+								  {% endfor %}
+</ul>
+								                         
+       	{% endif %}
+                {% endif %}
+                {% endfor %}
+				
+            
+			
+     
+			
+			
+			
+			
+			
+			</div>
+			
+			
+
+            <div class="content-right">
+			<div class="sticky-wrapper">
+                <div class="box">
+                    <h3 class="aside-title-content">{{locale.title}}</h3>
+                    <div class="aside-content">
+                        <div class="sides-container">
+                            <img src="/assets/images/web/pages/staff/staff.gif" style="float:right">
+                            {{locale.content_1}}<br>{{locale.content_2}}
+                        </div>
+                  </div>
+				  </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div id="searchOverlay" class="overlay">
+   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+   <div class="overlay-content">
+      <form action="profile/search">
+         <input type="text" placeholder="Wie zoek je?" name="search">
+         <button type="submit" onclick="closeSearch()"><i class="fa fa-search"></i></button>
+      </form>
+   </div>
+</div>
+{% if data.player.widgets %}
+<div class="page-content" {% if data.player.background.name is not empty%} data-background="{{data.player.background.name}}" {% endif %}>
+{% for widget in data.player.widgets %} 
+{% include "Home/Profile/widgets.html" %}
+{% endfor %}
+{% for widget in data.player.notes %} 
+{% include "Home/Profile/notes.html" %}
+{% endfor %}
+{% for sticker in data.player.widgets %}
+{% if sticker.type == "s" %}
+{% include "Home/Profile/stickers.html" %}
+{% endif %}
+{% endfor %}
+{% else %}
+{% include "Home/Profile/home.html" %}
+{% endif %}
+</div>
+{% endblock %}

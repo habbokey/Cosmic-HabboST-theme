@@ -1,0 +1,452 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700italic,700,600italic,600,400italic,300italic,300);@import url(960_24_col.css);
+body{
+	background:url(../img/opti/olympic16_background_left.png) bottom left no-repeat fixed,url(../img/opti/default_new_bg_right_ok.png) bottom right no-repeat fixed,url(../img/opti/background_z.png) bottom repeat-x fixed #2AA5D9;
+	font:14px 'Open Sans',sans-serif;
+	color:#fff;
+	margin:0;
+	padding:0;
+	overflow:none;
+}
+     .error {
+    color: white;
+    text-align: center;
+    padding: 10px;
+	display: none;
+	font-size: 18px;
+	width: 100%;
+	background: #CB0000;
+	border-radius: 2px;
+	margin-bottom: 8px;
+	line-height: 22px;
+    border-bottom: 2px solid rgba(0,0,0,0.4);
+ }
+ 
+#loginForm{
+	display:block;
+}
+#registerForm{
+	display:none;
+}
+#forgotForm{
+	display:none;
+	position:absolute;
+	top:40%;}#contentBox{
+	background:#252928;
+	padding:20px;
+	border-radius:7px;
+	-webkit-boder-radius:7px;
+	margin-top:70px;
+	border:1px solid rgba(0,0,0,.1);
+	box-shadow:-1px 2px 1px rgba(0,0,0,.2),1px 0 1px rgba(0,0,0,.2);
+	position:relative;
+	margin-bottom:10px;
+	border:3px solid #F0F7FF;
+}
+#contentBox #header{
+	height:86px;
+}#contentBox .habbologo{
+	background:url(../img/opti/logo.png) no-repeat;
+	opacity:0.7;
+	height:118px;
+	width:232px;
+	margin-top:-26px;
+	image-rendering:pixelated;
+	margin-left:-33px;
+	position:absolute;
+}
+#contentBox .habbologo:hover{
+	background:url(../img/opti/logo.png)no-repeat;
+	opacity:1;
+	height:118px;
+	width:230px;
+	margin-top:-26px;
+	image-rendering:pixelated;
+	margin-left:-33px;
+	position:absolute;
+}
+#contentBox #onlineBar{
+	background:#FBFAFA;
+	height:60px;
+	color:rgba(0,0,0,.6);
+	font:500 13px 'Open Sans',sans-serif;
+	padding:0px 30px;
+	line-height:53px;
+	margin-left:0px;
+	box-shadow:0 2px 1px rgba(0,0,0,.0);
+	margin-top:13px;
+	border-radius:4px;
+}
+#contentBox #onlineBar #arrow{
+	border-style:solid;
+	border-color:transparent transparent transparent #FBFAFA;
+	border-width:23px;
+	position:absolute;
+	margin-left:358px;
+	margin-top:0px;
+}
+#contentBox #onlineBar a{
+	color:rgba(0,0,0,.6);
+	text-decoration:none;
+}
+#contentBox .loginPosition{
+	width:536px;
+	position:absolute;
+	height:100px;
+	right:0;
+	top:15px;
+}
+#contentBox .loginPosition .usernamePosition{
+	width:194px;
+	height:100px;
+	float:left;
+	margin-right:58px;
+	margin-left:-120px;
+	margin-top:9px;
+}
+#contentBox .loginPosition .passwordPosition{
+	width:188px;
+	height:100px;
+	float:left;
+	margin-right:49px;
+	margin-top:9px;
+}
+#contentBox input[type=text],#contentBox input[type=password]{
+	background:#4C4C4C;
+	border:none;
+	color:white;
+	outline:none;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	padding:11.5px;
+	width:100%;
+	margin-bottom:5px;
+	transition:background .3s;
+	font:600 13px 'Open Sans',sans-serif;
+}
+#contentBox input[type=text]:focus,#contentBox input[type=password]:focus{
+	background:#FBFAFA;
+	color:rgba(0,0,0,.6);
+}
+#contentBox .loginPosition .usernamePosition label{
+	font:12px 'Open Sans',sans-serif;
+	position:absolute;
+	margin-top:0px;
+}
+#contentBox .loginPosition .passwordPosition .sub-link{
+	color:#fff;
+	font:12px 'Open Sans',sans-serif;
+	text-decoration:none;
+	cursor:pointer;
+}
+#loginForm #contentBox .checkBoxes{
+	background:#4C4C4C;
+	-webkit-appearance:none;
+	padding:6px;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	display:inline-block;
+	position:relative;
+	outline:none;
+}
+#loginForm #contentBox .checkBoxes:checked{
+	background:#FBFAFA;
+	box-shadow:0 1px 2px rgba(0,0,0,0.05),inset 0px -15px 10px -12px rgba(0,0,0,0.05),inset 15px 10px -12px rgba(255,255,255,0.1);
+}
+#loginForm #contentBox .checkBoxes:checked:after{
+	content:'\2714';
+	font-size:24px;
+	position:absolute;
+	top:-13px;
+	left:0;
+	color:#1AAD57;
+}
+#contentBox .loginPosition .loginButton{
+	padding:10px 30px;
+	background:#2AA5D9;
+	border:1px solid rgba(0,0,0,.1);
+	-webkit-appearance:none;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	outline:none;
+	font:800 14px 'Open Sans',sans-serif;
+	color:white;
+	box-shadow:0 2px 1px rgba(0,0,0,.1);
+	cursor:pointer;
+	transition:background .3s;
+	margin-top:9px;
+	height:41px;
+	border: 1px solid #F0F7FF;
+}
+#contentBox .loginPosition .loginButton:active{
+	background:#C6C6C6;
+}
+#contentBox .hotelview{
+	background:url(../img/opti/sumland.png);
+	border-radius:1px;-wekit-border-radius:1px;
+	height:250px;
+	margin-left:-20px;
+	width:1044px;
+	margin-bottom:15px;
+	position:relative;
+	border-top:3px solid #F0F7FF;
+	border-bottom:3px solid #F0F7FF;
+}
+#contentBox .hotelview .messageBox{
+	position:absolute;
+	margin-top:20px;
+	margin-left:20px;
+	width:400px;
+}
+#contentBox .hotelview .messageBox h2{
+	font:500 26px 'Open Sans',sans-serif;
+}
+#contentBox .hotelview .registerButton{
+	background:#14cc60;
+	padding:19px 30px;
+	border-radius:3px;
+	-webkit-border-radius:1px;
+	color:#fff;
+	font:bold 27px 'Open Sans',sans-serif;
+	text-decoration:none;
+	width:382px;
+	text-transform:uppercase;
+	position:absolute;
+	text-align:center;
+	right:283px;
+	top:88px;
+	box-shadow:0 2px 1px rgba(0,0,0,.3);
+	transition:background .3s;
+	border-radius:3px;
+}
+#contentBox .hotelview .registerButton:active{
+	background:#1AAD57;
+}
+#smallBoxes{
+	background:#252928;
+	padding:15px;
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	float:left;
+	width:307.33px;
+	box-shadow:-1px 2px 1px rgba(0,0,0,.2),1px 0 1px rgba(0,0,0,.2);
+	margin-right:10px;
+	height:93px;
+	border:3px solid #F0F7FF;
+}
+#smallBoxes:last-child{
+	margin-right:0px;
+}
+#smallBoxes p{
+	font:300 14px 'Open Sans',sans-serif;
+	width:200px;
+	margin-left:70px;
+	margin-top:0px;
+}
+#smallBoxes .images1{
+	background:url(../img/opti/image3.png) no-repeat center center;
+	height:60px;
+	width:60px;
+	float:left;
+	height:90px;
+	width:60px;
+	float:left;
+	margin-top:3px;
+	border-radius:5px;
+}
+#smallBoxes .images2{
+	background:url(../img/opti/image2.png) no-repeat center center;
+	height:60px;
+	width:60px;
+	float:left;
+	height:90px;
+	width:60px;
+	float:left;
+	margin-top:3px;
+	border-radius:5px;
+}
+#smallBoxes .images3{
+	background:url(../img/opti/image1.png) no-repeat center center;
+	height:60px;
+	width:60px;
+	float:left;
+	height:90px;
+	width:60px;
+	float:left;
+	margin-top:3px;
+	border-radius:5px;
+}
+#loginForm #contentBox #header h2{
+	position:absolute;
+	font:300 13px 'Open Sans',sans-serif;
+	font-weight:400;
+	margin-top:58px;
+	float:left;
+	margin-left:13px;
+	color:white;
+}
+#registerForm #contentBox #header h2{
+	position:absolute;
+	margin-left:176px;
+	font:300 13px 'Open Sans',sans-serif;
+	font-weight:400;
+	margin-top:57px;
+	float:right;
+}
+#registerForm #contentBox .boxOne{
+	width:100%;
+	float:left;
+	margin-right:20px;
+}
+#registerForm #contentBox .boxTwo{
+	width:494px;
+	float:left;
+	margin-right:20px;
+}
+#registerForm #contentBox .boxThree{
+	width:494px;
+	float:left;
+}
+#registerForm #contentBox label{
+	font-size:18px;
+	margin-bottom:10px;
+}
+#registerForm #contentBox p{
+	margin-top:0;
+	font-size:13px;
+}
+#registerForm #contentBox span{
+	color:rgba(255,255,255,.6);
+}
+#registerForm #contentBox input[type=text],#contentBox input[type=password],#contentBox input[type=email]{
+	background:#4C4C4C;
+	border:none;
+	outline:none;
+	color:white;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	padding:11.5px;
+	width:95%;
+	margin-bottom:20px;
+	transition:background .3s;
+	font:600 13px 'Open Sans',sans-serif;
+}
+#registerForm #contentBox input[type=text]:focus,#contentBox input[type=password]:focus,#contentBox input[type=email]:focus{
+	background:#FBFAFA;
+	color:rgba(0,0,0,.6);
+}
+#registerForm #contentBox select{
+	background:#4C4C4C;
+	border:none;
+	outline:none;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	padding:10.5px;
+	width:162.2px;
+	margin-bottom:5px;
+	transition:background .3s;
+	font:600 13px 'Open Sans',sans-serif;
+	color:#fff;
+	margin-bottom:20px;
+}
+#registerForm #contentBox select:focus{
+	background:#FBFAFA;
+	color:rgba(0,0,0,.6);
+}
+#registerForm #contentBox input[type=submit]{
+	background:#14cc60;
+	padding:8px 0px;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	-webkit-appearance:none;
+	color:#fff;
+	font:bold 18px 'Open Sans',sans-serif;
+	width:100%;
+	text-transform:uppercase;
+	position:relative;
+	transition:background .3s;
+	border:none;
+	outline:none;
+	cursor:pointer;
+	margin-top:33px;
+}
+#registerForm #contentBox input[type=submit]:active{
+	background:#1AAD57;
+}
+#registerForm #contentBox .checkBoxes{
+	background:#4C4C4C;
+	-webkit-appearance:none;
+	padding:7px;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	display:inline-block;
+	position:relative;
+	outline:none;
+}
+#registerForm #contentBox .checkBoxes:checked{
+	background:#FBFAFA;
+	box-shadow:0 1px 2px rgba(0,0,0,0.05),inset 0px -15px 10px -12px rgba(0,0,0,0.05),inset 15px 10px -12px rgba(255,255,255,0.1);
+}
+#registerForm #contentBox .checkBoxes:checked:after{
+	content:'\2714';
+	font-size:24px;
+	position:absolute;
+	top:-13px;
+	left:0;
+	color:#1AAD57;
+}
+#registerForm #contentBox .sub-link{
+	font-size:13px;
+	margin-top:0px;
+	position:absolute;
+}
+#contentBox #footer-content{
+	height:60px;
+	width:100%;
+	font:300 12px 'Open Sans',sans-serif;
+	border-top:1px solid rgba(0,0,0,.2);
+}
+#contentBox #footer-content .left{
+	float:left;
+	border-radius:5px;
+	margin-top:15px;
+	background:#2b2f2e;
+	width:auto;
+	padding-left:18px;
+	padding-right:18px;
+	padding:18px 18px 2px;
+}
+#contentBox #footer-content .right{
+	float:right;
+	margin-top:15px;
+	margin-right:-7px;
+	background:#2b2f2e;
+	width:375px;
+	height:87px;
+	padding:1px 13px 2px;
+	border-radius:5px;
+}
+#contentBox #footer-content .left .sonaydesign{
+	height:50px;
+	width:100px;
+	margin-top:20px;
+}
+#preloader { 
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:#3498db;
+	z-index:99;
+}
+#status {
+	width:200px;
+	height:200px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	background-image:url(../img/icon-loader.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:-100px 0 0 -100px;
+}

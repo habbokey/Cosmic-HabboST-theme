@@ -1,0 +1,141 @@
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -8px;
+  position: relative;
+}
+.col-4 {
+  max-width: calc(100% / 12 * 4);
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 calc(100% / 12 * 4);
+          flex: 1 0 calc(100% / 12 * 4);
+  padding: 0 8px;
+  position: relative;
+}
+
+.staff-box {
+  background: #1e1f23;
+  border-radius: 5px;
+  display: block;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+  margin: 0 0 20px 0;
+}
+
+.staff-box .staff-header {
+  height: 70px;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: relative;
+  float: left;
+}
+
+.staff-box .staff-header .header {
+  height: 70px;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  float: left;
+  opacity: .6;
+}
+
+.staff-box .staff-header .header:nth-child(odd) {
+  /* background: url(https://habnet.re/fvh7e8h.png) 0 -440px; */
+background: linear-gradient( 360deg, rgb(28 29 33) 4%, rgb(32 34 37 / 46%) 151%, rgba(7,7,8,0) 100%), url(/assets/images/render.png) 50px -253px;}
+
+.staff-box .staff-header .header:nth-child(even) {
+  background: url(../img/personal/staff_bg.png) 0 -220px;
+}
+
+.staff-box .staff-header .overlay {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.8)));
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+
+
+.staff-box .staff-header .overlay .work {
+  background: #2F3136;
+  position: absolute;
+  top: 23px;
+  right: 20px;
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+  border-radius: 5px;
+  padding: 3px 10px;
+  color: #ffffff;
+}
+
+.staff-box .avatarimage {
+  background: no-repeat top center;
+  width: 70px;
+  height: 130px;
+  position: absolute;
+  top: -18px;
+}
+
+.staff-box .png {
+  /* padding: -5px; */
+}
+
+.staff-box .png .motto {
+  position: absolute;
+  bottom: 23px;
+  left: 94px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.65);
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+}
+
+.staff-box .png .online-status {
+  position: absolute;
+  right: 20px;
+  bottom: 32px;
+  border-radius: 50px;
+}
+
+.staff-box .png .online-status.online {
+  background: #52be80;
+  height: 15px;
+  width: 15px;
+}
+
+.staff-box .png .online-status.offline {
+  /* background: #ef5350; */
+  height: 15px;
+  width: 15px;
+}
+
+.staff-box:hover {
+  opacity: .8;
+}
+.staff-box .png .motto {
+    position: absolute;
+    bottom: 26px;
+    left: 82px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
+    font: 600 19px "Poppins", "Roboto", sans-serif;
+}
+
+.staff-box .png .tebcreasyon {
+    position: absolute;
+    bottom: 77px;
+    left: 95px;
+    /* font-size: inherit; */text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
+    font: 600 12px "Poppins", "Roboto", sans-serif;
+}
+.staff-box .staff-header .overlay .username2 {
+    position: absolute;
+    bottom: 0px;
+    left: 100px;
+    font: 600 170% "Poppins", "Roboto", sans-serif;
+    color: #ffffff;
+}

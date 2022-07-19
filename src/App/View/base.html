@@ -1,0 +1,872 @@
+{% extends "permissions.html" %}{% set set_permission = 'homepage' %}{% block base %}{% if load is not defined %}
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="robots" content="follow, index">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <title>{{title}} - {{site.sitename}}</title>
+
+    <meta name="description"
+        content="Virtual world for young people where you can make and meet friends. Meet and make friends, chat with others, create your own avatar, design your own room for free and much more ...">
+    <meta name="keywords"
+        content="cosmic, {{site.sitename}}, virtual, world, social network, free, community, avatar, chat, online, teen, roleplaying, join, social, groups, forums, safe, play, games, online, friends, teens, rare, rare meubi, collect, make, collect, contact, meubi, furniture, pets, furnish room, share, expression, badges, hangout, music, celebrity, VIP visits, celebs, mmo, mmorpgs, massive multiplayer, dox , dox hotel, dox hotel, space hotel, space hotel, space, sunnie, sunnie day, sunnieday, habbo, HABBO, habbo hotel, habboo, habbo city, habbocity, cool, virtual world, vip, retro, retro hotel, habbo retro, free , free habbo, holo">
+
+    <meta property="og:title" content="{{site.sitename}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{site.domain}}">
+    <meta property="og:image" content="/assets/images/summary-picture.png">
+    <meta property="og:description" content="Virtual world where you can make and meet friends.">
+    <meta property="og:site_name" content="{{site.sitename}}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/menu.css?v=4">
+    <link rel="stylesheet" href="/assets/css/bbeditor.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
+    <link rel="stylesheet" href="/assets/css/flaticon.css?v=1">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css?v=1">
+    <link rel="stylesheet" href="/assets/css/homes.css?v=1">
+    <link rel="stylesheet" href="/assets/css/selectric.css?v=1">
+    <link rel="stylesheet" href="/assets/css/circle.css?v=5">
+    <link rel="stylesheet" href="/assets/css/web.{% if player %}{{player.template}}{% else %}{% if template %}{{template}}{% else %}light{% endif %}{% endif %}.css?v={{cache_timestamp}}?v=2">
+    <link rel="stylesheet" href="/assets/css/web.responsive.css?v=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
+  
+    <script>
+    var Site = {
+        name: "{{site.sitename}}",
+        url: "{{site.domain}}",
+        game_url: "{{site.cpath}}",
+        figure_url: "{{site.fpath}}"
+    }
+    
+    {% if player is empty %}  
+    var User = {
+        id: 0,
+        username: "",
+        online: 0,
+        is_logged: false,
+        is_staff: false
+    }
+    {% else %}
+    var Client = {
+        client_radio: "{{client.client_radio}}",
+        nitro_path: "{{client.nitro_path}}"   
+    }
+    var User = {
+        id: {{player.id}},
+        username: "{{player.username}}",
+        is_logged: true,
+        ticket: "{{player.auth_ticket}}",
+        is_staff: {% if player.rank >= 3 %}true{% else %}false{% endif %}
+
+    };
+    {% endif %}
+    var Configuration = {
+        {% if publickey is not empty %}recaptcha_public: "{{publickey}}",{% endif %}
+        revision: "{{revision}}2213",
+        cache: "{{cache_timestamp}}",
+        findretros: {% if findretros %}true{% else %}false{% endif %}
+    }
+    </script>
+</head>
+
+{% if player %}
+<div class="top">
+        <i class="nav-menu" onclick="toggleMenu('nav', 'groups')"></i>
+        <div class="wrapper">
+            <a class="me" href="/home" style="
+    height: 75px;
+    width: 250px;
+">
+                <div class="me-img-wrapper">
+                            <img src="{{site.fpath}}?figure={{player.look}}&direction=2&head_direction=3&gesture=nor&action=wav&size=b" width="64" height="110" class="figure">
+                </div>
+                <div class="me-info-wrapper">
+                    <span class="after ">{{player.username}}</span> 
+                    <p>{{player.motto}}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+	
+	  
+	
+	<div class="groups" id="groups">
+        <div class="groups-icon-wrapper">
+            <i class="groups-sprite"></i>
+        </div>
+        <ul class="groups-list">
+		
+				
+                        {% for row in groups %}
+					  <li class="groups-list-item" onmouseenter="tooltipLeft('group102')" onmouseleave="tooltipLeft('group102')" id="group102">
+                            <a href="">
+							<img class="groups-list-item-badge" src="{{site.domain}}/usercontent/badgeparts/generated/{{row.badge}}.png" alt="">
+							                    </a>
+
+</li>
+                        {% endfor %}
+               
+                
+				
+
+        
+                
+                    </ul>
+    </div>
+	
+	
+	
+	
+<a class="join" href="/hotelv2">
+    <i class="key-sprite"></i>
+    <span>{{locale_base.enter_hotel}}</span>
+    <svg>
+        <path d="m 100 0 L 50 0 L 0 75 L 50 75"></path>
+    </svg>
+</a>
+
+ {% endif %}
+
+<!--CONSOLA-->
+
+
+
+
+
+
+
+
+<!--CONSOLA-->
+
+
+<nav class="main-navigation" id="nav">
+        <i class="close-sprite" onclick="toggleMenu('nav', 'groups')"></i>
+        <a class="logo" href="/me">
+            <h1>{{site.sitename}}</h1>
+        </a>
+        <div class="main-navigation-wrapper">
+            <div class="main-navigation-content-wrapper">
+                <!--<h2>Navigation</h2>-->
+                <h3>{{player.username}}</h3>
+                <ul class="main-navigation-list">
+                    <li class="main-navigation-list-item">
+                        <a href="/home">{{locale_base.nav_home}}</a>
+                    </li>
+                    <li class="main-navigation-list-item">
+                        <a href="/profile/{{player.username}}">{{locale_base.nav_profile}}</a>
+                    </li>
+                    <li class="main-navigation-list-item">
+                        <a href="/settings">{{locale_base.user_settings}}</a>
+                    </li>
+                </ul>
+                <h3>{{locale_base.nav_community}}</h3>
+                <ul class="main-navigation-list">
+                    <li class="main-navigation-list-item">
+                        <a href="/community/photos">{{locale_base.nav_photos}}</a>
+                    </li>
+                    <li class="main-navigation-list-item">
+                        <a href="/articles">{{locale_base.nav_news}}</a>
+                    </li>
+
+					<li class="main-navigation-list-item">
+                        <a href="/community/rares">{{locale_base.nav_prices}}</a>
+                    </li>
+					
+					<li class="main-navigation-list-item">
+                        <a href="/games/ranking">{{locale_base.nav_highscores}}</a>
+                    </li>
+				
+	                <li class="main-navigation-list-item">
+                        <a href="/community/staff">{{locale_base.nav_staff}}</a>					
+                    </li>
+					  <li class="main-navigation-list-item">
+                        <a href="/community/team">{{locale_base.nav_team}}</a>
+                    </li>
+
+                </ul>
+                <h3>Extras</h3>
+                <ul class="main-navigation-list">
+				<li class="main-navigation-list-item">
+                        <a href="{{locale_base.app_download_link}}" target="_blank">{{locale_base.app_download}}</a>
+						
+                    </li>
+                <li class="main-navigation-list-item">
+                        <a href="/jobs">{{locale_base.nav_jobs}}</a>
+                    </li>
+					<li class="main-navigation-list-item">
+                        <a href="/help/requests/view">{{locale_base.nav_helptool}}</a>
+						
+                    </li>
+					<li class="main-navigation-list-item">
+                        <a href="/shop" style="color: #ef5c99;">{{locale_base.nav_shop}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-navigation">
+                <h3></h3>
+                <ul class="footer-navigation-list">
+                   
+                    </li>
+                    
+                    <li class="footer-navigation-list-item">
+                        <a href="/playing-habbo/safety">{{locale_base.nav_habboway}}</a>
+                    </li>
+                    <li class="footer-navigation-list-item">
+                        <a target="_blank" href={{locale_base.nav_discord}}>Discord Server</a>
+                    </li> 
+                    <li class="footer-navigation-list-item">
+                        <a style="color: #e74c3c;" href="/logout">{{locale_base.user_logout}}</a>
+                    </li>
+					                        <li class="ooter-navigation-list-item">
+                                                {% if 'housekeeping' in permissions %}
+                                                <li class="navigation-item">
+                                                    <a href="/housekeeping" target="_blank">HK</a>
+                                                </li>
+                                                {% endif %}
+                                    
+            </li>
+                            </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+<body class="flex-container flex-direction-column">
+    <noscript>
+        <style>
+            .loading-container {
+                display: none;
+            }
+        </style>
+    </noscript>
+    <div class="loading-container">
+        <div id="loading-background"></div>
+        <div class="loading-content">
+            <div class="c100 center">
+                <span></span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+            <div class="loading-bodytext"></div>
+        </div>
+    </div>
+
+    <div class="page-loading"></div>
+    <div class="notifications-container"></div>
+
+    <div class="cookies-accept-container">
+        <div class="close-container">&times;</div>
+        {{site.sitename}} {{locale_base.cookies}}
+        <a href="/help" target="_blank">{{locale_base.read_more}}</a>
+    </div>
+
+    <div id="about-dialog" class="login-popup zoom-anim-dialog mfp-hide">
+        <h1 class="aside-title">{{site.sitename}}</h1>
+        <p>{{locale_base.thanks_for_playing}} {{site.shortname}}!<br>{{site.shortname}} {{locale_base.made_with_love}}
+            ♥<br><br>
+            <h4>Cosmic 3.0</h4>Raizer
+        </p>
+
+        <h5>{{locale_base.and_all}} {{site.shortname}}'s ♥</h5>
+    </div>
+
+    {% if player is empty %}
+   
+    {% endif %}
+    {% if player %}
+    <div id="report-item" class="payment-popup zoom-anim-dialog mfp-hide">
+        <button title="{{locale_base.close}}" type="button" class="mfp-close" style="color:#000">&#215;</button>
+        <h3 class="aside-title">{{locale_base.report_message}}</h3>
+        <p>
+            {{locale_base.report_certainty}}
+        </p>
+        <form action="/ajax/report/add" method="post" class="login-form" id="reportForm">
+
+            <p>
+                <button type="submit" class="rounded-button blue plain"
+                    id="reportItem">{{locale_base.report_inappropriate}}</button>
+                <input type="hidden" id="reportItemid" name="itemId" value="">
+            </p>
+        </form>
+    </div>
+    {% endif %}
+
+<!--NAVEGADOR TOP-->
+
+
+
+                
+
+<div class="friends" id="friends">
+    <i class="close-sprite" onclick="toggleMenu('friends', 'searchUser')"></i>
+    <h2>{{locale_base.my_friends}}</h2>
+<div class="friends-counter">
+    <div class="friends-counter-wrapper">
+
+    </div>
+</div>
+
+
+
+ {% if onfriends is empty %}
+                <div class="friends-empty" onclick="autoFocus('searchUserInput')">
+                <div class="friends-empty-img-wrapper">
+                    <i class="empty-head-sprite"></i>
+                    <img class="friends-empty-img-background" src="../assets/img/9.png" alt="">
+                </div>
+				
+				                
+
+                <div class="friends-empty-info-wrapper">
+                    <span></span>
+                    <p>{{locale_base.search_friends}}</p>
+                </div>
+				
+				
+				
+  </div>
+  {% endif %}
+  
+
+  
+								
+				
+				
+				
+				
+				
+				
+				
+	
+				
+{% if onfriends is not empty %}
+                <h3>Conectados</h3>
+{% endif %}	
+				
+{% for friend in onfriends %}
+					
+				
+				
+            <ul class="friends-list online">
+                                    <li class="friends-list-item" id="5c04925674920eb58467fb52ce4ef728FriendItem" onclick="openFriendWindow('5c04925674920eb58467fb52ce4ef728');  return true;">
+                        <div class="friends-list-item-img-wrapper">
+                            <img class="friends-list-item-img-habbo" src="{{site.fpath}}?figure={{friend.look}}" alt="{{friend.username}}">
+                            <img class="friends-list-item-img-background" src="https://habbo.st/public/assets/pix/img/rooms/8.png" alt="">
+                        </div>
+                        <div class="friends-list-item-info-wrapper">
+						<a href="profile/{{friend.username}}">
+                            <span class="after ">{{friend.username}}</span>                      
+                            <p>{{friend.motto}}</p>
+						</a>
+                        </div>
+                    </li>
+                            
+                            </ul>
+{% endfor %}
+				
+				
+				
+{% if offfriends is not empty %}			
+				   <h3>Desconectados</h3>
+{% endif %}	
+				   
+           {% for friend in offfriends %}
+            <ul class="friends-list offline">
+                                    <li class="friends-list-item" id="5c04925674920eb58467fb52ce4ef728FriendItem" onclick="openFriendWindow('5c04925674920eb58467fb52ce4ef728');  return true;">
+                        <div class="friends-list-item-img-wrapper">
+                            <img class="friends-list-item-img-habbo" src="{{site.fpath}}?figure={{friend.look}}" alt="{{friend.username}}">
+                            <img class="friends-list-item-img-background" src="https://habbo.st/public/assets/pix/img/rooms/8.png" alt="">
+                        </div>
+                        <div class="friends-list-item-info-wrapper">
+                           <div class="friends-list-item-info-wrapper">
+						<a href="profile/{{friend.username}}">
+                            <span class="after ">{{friend.username}}</span>                      
+                            <p>{{friend.motto}}</p>
+						</a>
+                        </div>
+                    </li>
+                            
+                            </ul>
+            {% endfor %}
+				
+				
+				
+				
+           
+            <form class="search-user" action="#" method="post" id="searchUser">
+        <input id="searchUserInput" type="text" name="searchUserInput" value="" placeholder="{{locale_base.search_friends}}...">
+        <input id="searchUserInputSubmit" type="hidden" name="searchUserInputSubmit" value="">
+    </form>
+</div>
+
+				
+
+
+                                
+
+</div>
+
+
+
+
+
+ 
+<!--NAVEGADOR TOP-->
+
+
+
+<!-- HEADER -->
+
+ {% if player is empty %}
+<main style="margin-top: 0px;">
+        <<div class="hero">
+
+            <div class="wrapper">
+					<div class="account-buttons">
+                    {% if player is empty %}
+
+                    {% else %}
+                    {% if site.buttons.client_flash_button %}
+                        <!---<a href="/hotel" class="rounded-button white plain hotel-button flashButton">{{locale_base.header_to}} {{site.sitename}}</a>-->
+                    {% endif %} 
+                     {% if site.buttons.client_nitro_button %}
+                    <!---<a href="/hotel=beta" class="rounded-button white plain hotel-button nitroButton">{{locale_base.header_to}} Beta {{site.sitename}}</a>-->
+                    {% endif %}
+                    <!---<button class="rounded-button white plain">{{online_count}} {{site.sitename}}'s online</button>--->
+                    {% endif %}
+                </div>
+                <i class="logo-sprite" href="/me"></i>
+            </div>
+        </div>
+		
+		
+		
+		
+		
+		
+		
+	                   
+        <div class="bottom">
+            <div class="wrapper">
+                <div class="attention">
+                    <i class="alert-msg"></i>
+                   <p>{{locale_base.welcome_p1}}<b>{{player.username}}</b> {{locale_base.welcome_p2}}</p>
+                </div>
+            </div>
+			
+ {% if player %}
+            <i class="friends-menu" onclick="toggleMenu('friends', 'searchUser')"></i>
+        </div>
+        <script type="text/javascript">
+            function checkAuction() {
+                if(document.forms["auctionForm"]["auctionInput"].value !== "") {
+                    $("#notificationAuction .notification").remove();
+                
+                    $.ajax({
+                        type: 'POST',
+                        url:'/auction.php',
+                        data: { action: "auction", amount: document.forms["auctionForm"]["auctionInput"].value, auction: "ajax" },
+                        success: function(data, textStatus, request){
+                            if(request.responseText == "not_an_integer") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Bitte gib eine Zahl ein.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "invalid_amount") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Der Höchstbietende muss überboten werden.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "not_logged_in") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Du bist nicht mehr angemeldet. Lade die Seite neu.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "user_not_found") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Dein Benutzer existiert nicht (mehr).<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "not_enough_money") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Du hast nicht genug Geld, um diese Summe zu bieten!<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "unknown_error") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Technischer Fehler! Versuche es später nochmal.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "auction_not_found") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Die Auktion ist bereits abgelaufen.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "success") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification' style='background-color: #23C552'>Erfolgreich geboten! Die Seite wird neu geladen.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#23C552' /></svg></span>";
+                                setTimeout(function() {
+                                    window.location.replace("/me");
+                                }, 3000);
+                            }
+                            else {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification' style='background-color: #000'>In Entwicklung!<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#000' /></svg></span>";
+                            }
+                        },
+                        error: function (request, textStatus, errorThrown) {
+                            document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Technischer Fehler! Versuche es später nochmal.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                        }
+                    });
+                }
+            }
+
+            function formatNumber(num) {
+                num = num.replace(/[^0-9]/g, "");
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+            }
+
+            $(document).ready(function(){
+
+                $('#auctionInput').on('propertychange input', function (e) {
+                    var valueChanged = false;
+
+                    if (e.type=='propertychange') {
+                        valueChanged = e.originalEvent.propertyName=='value';
+                    } else {
+                        valueChanged = true;
+                    }
+                    if (valueChanged) {
+                        var currentValue = $('#auctionInput').val();
+                        var formattedValue = formatNumber(currentValue);
+                        $('#auctionInput').val(formatNumber(currentValue));
+                    }
+                });
+            });
+        </script>
+		
+   {% endif %}
+	
+	<!--header-->
+<!----- INDEX ----->
+
+ {% if player is empty %} 
+<div class="page-content">
+ {% if player is empty %} 
+                  
+</div>
+{% endif %}
+
+
+{% endif %}
+
+
+				
+					   
+
+	
+                                    </div>
+            </div>
+			                    {% endif %}
+
+        </div>
+    </header>
+
+
+
+
+
+                    {% if player %}
+
+<main>
+        <div class="hero">
+
+            <<div class="wrapper">
+					<div class="account-buttons">
+                    {% if player is empty %}
+
+                    {% else %}
+                    {% if site.buttons.client_flash_button %}
+                        <!---<a href="/hotel" class="rounded-button white plain hotel-button flashButton">{{locale_base.header_to}} {{site.sitename}}</a>-->
+                    {% endif %} 
+                     {% if site.buttons.client_nitro_button %}
+                    <!--<a href="/hotel=beta" class="rounded-button white plain hotel-button nitroButton">{{locale_base.header_to}} Beta {{site.sitename}}</a>-->
+                    {% endif %}
+                    <!--<button class="rounded-button white plain">{{online_count}} {{site.sitename}}'s online</button>-->
+                    {% endif %}
+                </div>
+                <i class="logo-sprite" href="/me"></i>
+            </div>
+        </div>
+		
+		
+		
+		
+		
+		
+		
+	                   
+        <div class="bottom">
+            <div class="wrapper">
+                <div class="attention">
+                    <i class="alert-msg"></i>
+                   <p style="margin-left: 10px;">{{locale_base.welcome_p1}}<b>{{player.username}}</b> {{locale_base.welcome_p2}}</p>
+                </div>
+            </div>
+			
+ {% if player %}
+            <i class="friends-menu" onclick="toggleMenu('friends', 'searchUser')"></i>
+        </div>
+        <script type="text/javascript">
+            function checkAuction() {
+                if(document.forms["auctionForm"]["auctionInput"].value !== "") {
+                    $("#notificationAuction .notification").remove();
+                
+                    $.ajax({
+                        type: 'POST',
+                        url:'/auction.php',
+                        data: { action: "auction", amount: document.forms["auctionForm"]["auctionInput"].value, auction: "ajax" },
+                        success: function(data, textStatus, request){
+                            if(request.responseText == "not_an_integer") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Bitte gib eine Zahl ein.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "invalid_amount") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Der Höchstbietende muss überboten werden.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "not_logged_in") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Du bist nicht mehr angemeldet. Lade die Seite neu.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "user_not_found") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Dein Benutzer existiert nicht (mehr).<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "not_enough_money") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Du hast nicht genug Geld, um diese Summe zu bieten!<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "unknown_error") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Technischer Fehler! Versuche es später nochmal.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "auction_not_found") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Die Auktion ist bereits abgelaufen.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                            }
+                            else if(request.responseText == "success") {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification' style='background-color: #23C552'>Erfolgreich geboten! Die Seite wird neu geladen.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#23C552' /></svg></span>";
+                                setTimeout(function() {
+                                    window.location.replace("/me");
+                                }, 3000);
+                            }
+                            else {
+                                document.getElementById("notificationAuction").innerHTML += "<span class='notification' style='background-color: #000'>In Entwicklung!<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#000' /></svg></span>";
+                            }
+                        },
+                        error: function (request, textStatus, errorThrown) {
+                            document.getElementById("notificationAuction").innerHTML += "<span class='notification'>Technischer Fehler! Versuche es später nochmal.<svg width='18px' height='18px'><path d='M 0 9 L 9 0 L 9 18 L 0 9' fill='#d63031' /></svg></span>";
+                        }
+                    });
+                }
+            }
+
+            function formatNumber(num) {
+                num = num.replace(/[^0-9]/g, "");
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+            }
+
+            $(document).ready(function(){
+
+                $('#auctionInput').on('propertychange input', function (e) {
+                    var valueChanged = false;
+
+                    if (e.type=='propertychange') {
+                        valueChanged = e.originalEvent.propertyName=='value';
+                    } else {
+                        valueChanged = true;
+                    }
+                    if (valueChanged) {
+                        var currentValue = $('#auctionInput').val();
+                        var formattedValue = formatNumber(currentValue);
+                        $('#auctionInput').val(formatNumber(currentValue));
+                    }
+                });
+            });
+        </script>
+		
+   {% endif %}
+	
+	<!--header-->
+<!----- INDEX ----->
+
+ {% if player is empty %} 
+<div class="page-content">
+ {% if player is empty %} 
+                  
+</div>
+{% endif %}
+
+
+{% endif %}
+
+
+				
+					   
+
+	
+                                    </div>
+            </div>
+			                    {% endif %}
+
+        </div>
+    </header>
+
+
+
+
+
+
+
+  
+
+
+
+
+<!----- INDEX ----->
+{% if player is empty %}
+<section class="page-container">
+<div class="page-content" style="height: auto !important; max-width: 800px;">
+
+
+            <article class="default-section">
+<div class="sides-container" style="padding: 20px;">
+
+
+
+
+<div class="content-side" style="padding: 0 25px 0 5px; width: 60%; float: left;">
+
+<h3 class="teb-aside-title-content">Ingresa a {{site.sitename}} &#x2661;</h3>
+<hr>
+<div class="login-form">
+            <label for="login-username-input-target" class="username-input">
+                <input type="text" name="username" class="rounded-input blue-active" id="login-username-input-target"  
+				placeholder="{{site.shortname}}{{locale_base.login_name}}..." required>
+            </label>
+			
+			<div style="padding-bottom: 20px;"> </div>
+			
+            <label for="login-password-input-target" class="password-input">
+                <input type="password" name="password" class="rounded-input blue-active"
+                    id="login-password-input-target" placeholder="{{locale_base.login_password}}..." autocomplete="off"
+                    required>
+
+            </label>
+			
+				<div style="padding-bottom: 20px;"> </div>
+				
+            <input type="hidden" name="csrftoken" value="{{csrf_token}}" />
+            <a href="password/claim" class="claim-password" data-close-popup="true"
+                style="margin-top:1px;margin-right: 165px;">{{locale_base.login_lost_password}}</a>
+            <button type="submit" class="rounded-button blue plain" id="login-request">{{locale_base.header_to}} {{site.sitename}}</button>
+        </div>
+  
+</div>
+
+
+<div class="content-side" style="padding: 0 25px 0 5px; width: 40%; float: left;">
+<h3 class="teb-aside-title-content">¿Nuevo en {{site.shortname}} Hotel?</h3>
+<hr>
+<div class="column">
+<p>{{site.shortname}} es un mundo virtual donde puedes hacer y conocer amigos.</p>
+<p>{{site.shortname}} es completamente gratis ¡Crea rápidamente tu propio {{site.shortname}} y chatea con tus amigos!</p>
+<p>{{site.shortname}} funciona en teléfonos móviles, ipad, portátiles y ordenadores, ¿vienes también?</p>
+<hr>
+</div>
+<div class="column space-bottom">
+<p style="text-align: center; margin-top: 30px;"><a href="/registration" class="rounded-button green plain default-prevent">¡Regístrate gratis!</a></p>
+</div>
+</div>
+</div>
+</article>
+
+
+</div>
+		
+		
+    </section>
+
+{% endif %}
+
+
+
+
+                  
+
+{% if player %}
+    <section class="page-container" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}">
+        {% block body %} {% endblock %}
+    </section>
+{% endif %}
+
+    <footer class="footer-container">
+        <div class="footer-copyright">&copy; 2019 {{site.domain}} | <a href="/help/">{{locale_base.footer_helptool}}</a> | <a
+                href="#" class="about-dialog-button">Cosmic</a></div>
+    </footer>
+
+    {% if player %}
+    <div id="hotel-container">
+        <div class="client-buttons">
+            <button class="client-close rounded-button blue plain">
+                <i style="margin-top:2px;margin-left:3px;" class="client-icon fa fa-arrow-left" aria-hidden="true"></i>
+                <span class="client-close-expand"><span>Web</span></span>
+            </button>
+            <button class="client-fullscreen rounded-button blue plain">
+                <i class="client-icon client-fullscreen-icon"></i>
+                <i class="client-icon client-fullscreen-icon-back hidden"></i>
+            </button>
+
+            <button class="client-count rounded-button blue plain">
+                {% if 'housekeeping' in permissions %}<a href="/housekeeping" target="_blank"
+                    style="color:#fff;text-decoration: none;"><i class="fa fa-user"></i> <b
+                        id="count">{{online_count}}</b></a>{% else %}<i class="fa fa-user"></i> <b
+                    id="count">{{online_count}}</b>{% endif %}
+            </button>
+
+            <button class="client-radio rounded-button blue plain">
+                <audio controls id="stream" style="display:none">
+                    <source type="audio/mpeg">
+                </audio>
+
+                <i class="fa fa-play"></i>
+                <i class="fa fa-pause" style="display: none"></i>
+
+                <i class="fa fa-volume-down"></i>
+                <i class="fa fa-volume-up"></i>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+
+    <script src="/assets/js/js.cookie.js"></script>
+    <script src="/assets/js/jquery.history.js"></script>
+    <script src="/assets/js/jquery.fullscreen.min.js"></script>
+    <script src="/assets/js/jquery.magnific-popup.js"></script>
+    <script src="/assets/js/selectric.js?v=34212"></script>
+    <script src="/assets/js/functions.js"></script>
+    <script src="/assets/js/web/loading.js?v={{cache_timestamp}}"></script>
+    <script src="/assets/js/pagination.js"></script>
+    <script src="/assets/js/jquery.wysibb.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id={{paypal_client_id}}&currency={{paypal_currency}}&disable-funding=credit,card"></script>
+<script type="text/javascript" src="https://habbo.st/public/assets/pix/js/app.js?time=1654457677"></script>
+</body>
+
+</html>
+{% else %}
+{{ block('body') }}
+{% endif %}
+{% endblock %}

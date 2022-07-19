@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+{% block body %}
+
+
+
+
+             <!----- INDEX ----->
+{% if player is empty %}
+<section class="page-container">
+<div class="teb-page-content" style="height: auto !important; max-width: 800px;">
+
+
+            <article class="default-section">
+<div class="sides-container" style="padding: 20px;">
+
+
+
+
+<div class="content-side" style="padding: 0 25px 0 5px; width: 60%; float: left;">
+
+<h3 class="teb-aside-title-content">Ingresa a {{site.sitename}} &#x2661;</h3>
+<hr>
+<div class="login-form">
+            <label for="login-username-input-target" class="username-input">
+                <input type="text" name="username" class="rounded-input blue-active" id="login-username-input-target"
+                    placeholder="{{site.shortname}}{{locale_base.login_name}}..." required>
+                <i class="flaticon-user-1"></i>
+            </label>
+            <label for="login-password-input-target" class="password-input">
+                <input type="password" name="password" class="rounded-input blue-active"
+                    id="login-password-input-target" placeholder="{{locale_base.login_password}}..." autocomplete="off"
+                    required>
+                <i class="flaticon-padlock"></i>
+            </label>
+            <input type="hidden" name="csrftoken" value="{{csrf_token}}" />
+            <a href="password/claim" class="claim-password" data-close-popup="true"
+                style="margin-top:1px">{{locale_base.login_lost_password}}</a>
+            <button type="submit" class="rounded-button blue plain" id="login-request">Entrar</button>
+        </div>
+  
+</div>
+
+
+<div class="content-side" style="padding: 0 25px 0 5px; width: 40%; float: left;">
+<h3 class="teb-aside-title-content">¿Nuevo en {{site.shortname}} Hotel?</h3>
+<hr>
+<div class="column">
+<p>{{site.shortname}} es un mundo virtual donde puedes hacer y conocer amigos.</p>
+<p>{{site.shortname}} es completamente gratis ¡Crea rápidamente tu propio {{site.shortname}} y chatea con tus amigos!</p>
+<p>{{site.shortname}} funciona en teléfonos móviles, ipad, portátiles y ordenadores, ¿vienes también?</p>
+<hr>
+</div>
+<div class="column space-bottom">
+<p style="text-align: center; margin-top: 30px;"><a href="/registration" class="rounded-button green plain default-prevent">¡Regístrate gratis!</a></p>
+<p style="text-align: center; margin-top: 30px;"><a href="             " class="rounded-button purple plain default-prevent">Logear vía Facebook</a></p>
+</div>
+</div>
+</div>
+</article>
+
+
+</div>
+		
+		
+    </section>
+
+{% endif %}
+
+
+
+ 
+		
+		<style>
+		   .page-container[data-page="home"] .teb-page-content .articles-container .article-container .article-content {
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-color: rgb(255, 255, 255);
+    width: 88%;
+    max-width: 211px;
+    height: 187px;
+    margin: 22px auto;
+    background-size: cover;
+    box-shadow: rgb(255 255 255 / 5%) 0px 0px 0px 2px;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+    display: block;
+    border-radius: 10px;
+	
+	.article-header {
+	
+	}
+	</style>
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+            {% if player %}
+			<div class="teb-page-content">
+
+            <div class="left-side" style="height: auto !important;">
+               
+				
+
+				<div class="myfriends-online">
+                  
+
+                            <div class="icons" style="background: url(/assets/images/hotel/purses/credits-icon.png?4) no-repeat center center;"></div>
+                            <div style="color: #E2AE1D;">
+                               <h1 _msthash="1483261" _msttexthash="781833">• {{player.credits}}</h1> 
+                            </div>
+							 {% for value in currencys %}
+                                                      <div class="icons" style="background: url(/assets/images/hotel/purses/{{value.type}}-icon.png) no-repeat center center;"></div>
+                            <div style="color: #BA7CC2;">
+							 <h1 _msthash="1483261" _msttexthash="781833">
+                               • {{value.amount}}</h1>
+                            </div>             
+                            {% endfor %}
+                           
+
+
+
+
+
+			   </div>
+			   
+			   
+<div id="news-content">
+                <article class="default-section">
+                 <script src="\assets\js\vendor.js" type="text/javascript"></script>
+                 <script src="\assets\js\app.js" type="text/javascript"></script>
+                 <link type="text/css" rel="stylesheet" href="\assets\css\newsie.css">     
+                 <div class="related-articles-container">
+
+                {% for news in news %}
+				
+                <div class="news-article show" style="background-image: linear-gradient( 180deg, rgb(28 29 33) 4%, rgb(32 34 37 / 46%) 151%, rgba(7,7,8,0) 100%), url({{news.header}}); center no-repeat  background-size: cover; display: block;">
+
+                <div class="news-content">
+                    <div class="teb-aside-title-content" <a href="/article/{{news.id}}-{{news.slug}}" style="color: white;">{{news.title}}</div>
+                    <div class="aside-desc-content" style="color: white;">{{news.short_story}}</div>
+                </div>
+                <div class="details-box" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                    <div class="authors-details">
+                        <div class="written-by">
+                            <b>Publicado:</b>
+                            <div class="related-article-date">{{news.timestamp|date("d-M")}}</div>
+                        </div>
+                    </div>
+                   <a href="/article/{{news.id}}-{{news.slug}}" class="btn green news-slider-btn">Leer Más »</a>
+                    
+
+                    <div class="back-news">&lt;<i class="fal"></i></div>
+                    <div class="next-news">&gt;<i class="fal"></i></div>
+                </div>
+            
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </article>		
+				
+              
+			  <aside class="default-section">
+                  
+                    <div class="teb-aside-title-content">{{locale.refers}}</div>
+                    <div class="aside-desc-content">{{locale.refers_desc}}</div>
+                  
+                                      
+                         <div class="aside-content">		
+                         <div class="friends-container">
+                    
+                    <input type="text" value="{{site.domain}}/registration/{{player.username}}" id="getReferral" class="form-control" style="width: 405px" autocomplete="off" required>
+					<button id="copyReferral" class="rounded-button brown" style="margin-left:20px">Copiar</button>
+                    </div>
+
+						
+						
+						
+                    </div>
+                                    </aside>
+              
+                <aside class="default-section">
+                  
+                    <div class="teb-aside-title-content">{{locale.popular_rooms}}</div>
+                    <div class="aside-desc-content">{{locale.popular_rooms_label}}</div>
+                  
+                    {% if rooms is empty %}
+                        <div class="aside-content">
+                            {{locale.popular_no_rooms}}
+                        </div>
+                    {% endif %}
+                  
+                    {% if rooms is not empty %}
+                    <div class="aside-content">
+                        <table class="rooms table table-striped">
+                            <tbody>
+                                {% for row in rooms %}
+                                    {% if row.users >= 25 %}
+                                        {% set number = 5 %}
+                                    {% elseif row.users >= 15 %}
+                                        {% set number = 4 %}
+                                    {% elseif row.users >= 10 %}
+                                        {% set number = 3 %}
+                                    {% elseif row.users >= 1 %}
+                                        {% set number = 2 %}
+                                    {% else %}
+                                        {% set number = 1 %}
+                                    {% endif %}
+                                <tr>
+                                    <td style="text-align: center;"><img src="/assets/images/web/pages/community/rooms/room_icon_{{number}}.gif"></td>
+                                    <td style="text-align: justify;word-break: break-word;">{{row.name}}<br><i style="font-size: 11px;word-break: break-word;"></i></td>
+                                    <td><img src="/assets/images/web/pages/community/rooms/visitors.gif"> <b>{{row.users}}</b></td>
+                                    <td style="width: 150px;padding-left: -5px"><a href="{% if player.online %}/api/room/{{row.id}}{% else %}/hotel?room={{row.id}}{% endif %}" class="rounded-button brown">{{locale.goto_room}}</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+						
+                    </div>
+                    {% endif %}
+                </aside>
+
+				    <article class="default-section" style="margin-top: 0px;">
+					<div class="teb-aside-title-content">{{locale.online_friends}}</div>
+                    <div class="aside-desc-content">{{locale.online_friends_desc}}</div>
+					
+                    <div class="aside-content">
+                        {% for friend in friends %}
+                        <div class="friends-container">
+                            <a href="/profile/{{friend.username}}">
+                                <div class="avatar">
+                                    <img src="{{site.fpath}}?figure={{friend.look}}&head_direction=3&gesture=sml&headonly=true" alt="{{friend.username}}">
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </article>		
+              
+              {% endif %}
+
+              
+            </div>
+          
+
+            {% if player %}
+            <div class="right-side" style="margin-bottom: 7px;">
+			
+			
+			                {% if oftw is not empty %}
+                    <aside class="default-section">
+                        <div class="teb-aside-title-content">{{locale.user_of_the_week}}</div>
+                        <div class="aside-desc-content">{{locale.user_of_the_week_label}}</div>
+                        <div class="aside-content">
+                            <div class="teb-flex-container flex-vertical-center">
+                                <div class="user_of_the_week">
+                                <div class="user_of_the_week_img">
+                                    <img src="{{site.fpath}}?figure={{oftw.look}}&amp;action=std&amp;gesture=sml&amp;direction=1&amp;head_direction=2&amp;headonly=0&amp;effect=6&amp;img_format=gif">
+                                </div>
+                                </div>
+                                <div class="user_of_the_week_info">
+                                    <a href="/profile/{{oftw.username}}">{{oftw.username}}</a><br>
+                                    <small>{{oftw.motto}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                {% endif %}
+			
+
+			
+			
+			
+			
+			
+                <aside class="default-section">
+                    <div class="teb-aside-title-content">{{locale.popular_groups}}</div>
+                    <div class="aside-desc-content">{{locale.popular_groups_label}}</div>
+                    <div class="aside-content">
+
+                        {% for row in groups %}
+                            <div id="popularGroups" style="background: url('{{site.cpath}}/c_images/Badgeparts/generated/{{row.badge}}.png') 10px 50% no-repeat {% if player.template == "dark"%}#2f2f2f{% endif %}"><div class="countGroupMembers">{{row.Total}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
+                        {% endfor %}
+                    </div>
+                </aside>
+          
+
+              
+
+
+
+
+
+            </div>
+
+
+            {% endif %}
+{% endblock %}

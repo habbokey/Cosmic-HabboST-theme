@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}{{article.title}}{% endblock %}
+{% block body %}
+<!--header class="page-header flex-container flex-vertical-center" style="background-size: 100%;width: 100%;background-image: url({{article.header}}); background-color: #8f8c8c;">
+    <div class="page-header-content">
+        <h1>{{article.title}}</h1>
+        {{article.short_story}}
+    </div>
+</header--->
+
+<div class="page-content">
+    <div class="left-side">
+	
+      <h2>Informacion</h2>
+							
+        <article class="default-section">
+            <div class="aside-title-content">{{article.title}}</div>
+            <div class="aside-desc-content">{{article.short_story}}</div>
+            <div class="aside-content">
+                {% if article.images is not empty %}
+                <img src="{{article.images}}" style="float:right">
+                {% endif %}
+                {{article.full_story|raw}}
+
+                <div class="article-author flex-container flex-vertical-center">
+                    <div class="author-image">
+                        {% if article.author == "0" %}
+                        <img src="/assets/images/web/avatar-frank.png" alt="Hotel Management">
+                        {% else %}
+                        <img src="{{site.fpath}}?figure={{article.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="{{article.author.username}}">
+                        {% endif %}
+                    </div>
+
+                    <div class="author-details">
+                        {% if article.author == "0" %}
+                        <div class="author-name">Hotel Management</div>
+                        {% else %}
+                        <div class="author-name"><a href="/profile/{{article.author.username}}" class="related-article-container">{{article.author.username}}</a></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+            <div class="right-side">
+			                <h2>Ultimas Noticias</h2>
+							
+
+                           {% for item in latest_news %}
+							
+                            
+                                <div class="related-article-thumbnail" style="background-image: url({{item.header}});">
+								 <h4>{{item.title}}</h4>
+								  <a href="/article/{{item.id}}-{{item.slug}}">Leer mas</a>
+                                <div class="related-article-details">
+                                   
+                                </div>
+								</div>
+                         
+                            {% endfor %}
+
+
+
+                     
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}

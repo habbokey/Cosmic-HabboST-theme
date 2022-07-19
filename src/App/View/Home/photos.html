@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<link rel="stylesheet" href="/assets/css/ars.css?2s">
+
+
+<main style="margin-top: 15px;">
+	<div class="wrapper">
+            <div class="content images-content">
+<div class="images">
+                    <ul class="images-list">
+        
+
+        {% for photo in data %}
+		
+        		 <li class="collage-list-item">
+                            <img src="{{photo.url}}" alt="">
+                            <div class="collage-list-item-photographer">
+                                <div class="collage-list-item-photographer-wrapper">
+                                    <a href="/profile/{{photo.author}}">
+                                        <div class="collage-list-item-photographer-img-wrapper
+                                            <img src="{{site.fpath}}?figure={{photo.figure}}&gesture=sml&headonly=1" alt="">
+                                             </div>
+                                        <span class="after adm>">{{photo.author}}</a>
+                        <span class="likes-count fc-like" data-id="{{photo.id}}">{{photo.likes}} <i class="fa fa-heart" data-id="{{photo.id}}" style="color: #D67979;"></i></span>
+					
+
+                                    
+
+                    </div>
+                
+            </div>
+			</li>
+       
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
