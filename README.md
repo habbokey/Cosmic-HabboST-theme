@@ -56,6 +56,10 @@ git clone https://git.krews.org/Raizer/Cosmic.git ./
 
 - Remember this is a uncompleted theme, if you want it completed let me know or do it by your self.
 - Italian and Netherlands languajes are uncompleted, English is 100% working.
+
+- Register
+- Login
+
 ### Setting up Nginx
 
 If you are using Nginx please make sure that url-rewriting is enabled.
